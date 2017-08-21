@@ -1,0 +1,8 @@
+$ export MY_GCC=`which gcc` 
+
+$ stack build --flag llvm-hs:shared-llvm --with-gcc=${MY_GCC}
+
+stack.yaml:
+
+ghc-options:
+  llvm-hs: "-pgmc=/share/easybuild/RHEL6.3/sandybridge/software/GCCcore/5.4.0/bin/gcc"
