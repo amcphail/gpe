@@ -300,11 +300,24 @@
 > newtype FitsFile = FitsFile (ForeignPtr (FitsFile))
 > withFitsFile (FitsFile fptr) = withForeignPtr fptr
 > 
-> foreign import ccall "CloseFile.h &closeFile"
->   closeFile :: FunPtr (Ptr FitsFile -> IO ())
-> 
+> foreign import ccall "CloseFile.h &CloseFile"
+>   closeFile_'_ :: FunPtr (Ptr FitsFile -> IO ())
+
+ closeFile_ :: FitsFile -> Status -> IO (Status)
+ closeFile_ a1 a2 =
+   withFitsFile a1 $ \a1' ->
+   withStatusConv a2 $ \a2' ->
+   closeFile_'_ a1' a2' >>= \res ->
+   let {res' = cToStatus res} in
+   return res'
+ 
+ closeFile :: FitsFile -> IO ()
+ closeFile a1 = do
+   closeFile_ a1 noError
+   return ()
+
 > newFitsFile   :: Ptr (Ptr FitsFile) -> IO FitsFile
-> newFitsFile p = peek p >>= fmap FitsFile . newForeignPtr closeFile
+> newFitsFile p = peek p >>= fmap FitsFile . newForeignPtr closeFile_'_
 > 
 > deleteFile_ :: FitsFile -> Status -> IO (Status)
 > deleteFile_ a1 a2 =
