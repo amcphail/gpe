@@ -1,3 +1,3 @@
 # gpe
 
-Ported from: https://github.com/deejaybee11/thermalization
+Ported to Haskell from: https://github.com/deejaybee11/thermalization
