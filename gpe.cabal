@@ -10,18 +10,18 @@ maintainer:          haskell.vivian.mcphail@gmail.com
 copyright:           Copyright (c) 2017 A. V. H. McPhail
 category:            Simulation
 build-type:          Simple
-extra-source-files:  README.md, modules.sh, stack.yaml, stack_command.txt
+extra-source-files:  README.md, modules.sh, stack.yaml, stack_command.txt, include/CloseFile.h
 cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Lib
-                     , Data.Fits.FitsIO
+  exposed-modules:     Data.Fits.FitsIO
                      , Numeric.GPE.Utils		
                      , Numeric.GPE.SimulationData
                      , Numeric.GPE.WaveFunction
                      , Numeric.GPE.Potential
                      , Numeric.GPE.SaveData
+                     , Numeric.GPE.Solve
   build-depends:       base >= 4.7 && < 5
                      , bytestring
                      , bytestring-conversion
@@ -34,6 +34,11 @@ library
                      , accelerate-fft
                      , accelerate-llvm
                      , accelerate-llvm-ptx
+  include-dirs:        include
+  includes:            CloseFile.h
+  c-sources:           src/CloseFile.c
+  extra-libraries:     cfitsio
+  ghc-options:         -pgmlg++
   default-language:    Haskell2010
 
 executable gpe-exe
