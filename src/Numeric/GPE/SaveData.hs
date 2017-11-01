@@ -18,6 +18,7 @@
 -----------------------------------------------------------------------------
 
 module Numeric.GPE.SaveData (
+       save2DImage
   ) where
 
 -----------------------------------------------------------------------------
@@ -30,7 +31,8 @@ import qualified Data.ByteString.Conversion.From as BSF
 
 import Data.Array.Accelerate
 import Data.Array.Accelerate.IO
-import Data.Array.Accelerate.Interpreter
+--import Data.Array.Accelerate.LLVM.Interpreter
+import Data.Array.Accelerate.LLVM.PTX
 import Data.Array.Accelerate.Data.Complex
 
 --import qualified Data.Vector as V

@@ -22,6 +22,8 @@ module Numeric.GPE.Utils (
   , fst3, snd3, trd3
   , fst4, snd4, trd4, fth4
   , add4th
+  , mul4th
+  , sub4th
   , complexPair
   ) where
 
@@ -99,6 +101,21 @@ add4th t1 t2 = let x1 = fst4 t1
                    c1 = fth4 t1
                    c2 = fth4 t2
                in lift (x1,y1,z1,c1+c2)
+
+mul4th :: (Elt a, Elt b, Elt c, Elt d, Num d) => Exp (a,b,c,d) -> Exp d
+          -> Exp (a,b,c,d)
+mul4th t1 t2 = let x1 = fst4 t1
+                   y1 = snd4 t1
+                   z1 = trd4 t1
+                   c1 = fth4 t1
+               in lift (x1,y1,z1,c1*t2)
+
+sub4th :: (Elt a, Elt b, Elt c, Elt d, Num d) => Exp (a,b,c,d) -> Exp d 
+          -> Exp (a,b,c,d)
+sub4th t1 t2 = let x1 = fst4 t1
+                   y1 = snd4 t1
+                   z1 = trd4 t1
+               in lift (x1,y1,z1,t2)
 
 -----------------------------------------------------------------------------
 

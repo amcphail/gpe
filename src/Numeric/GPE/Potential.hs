@@ -16,7 +16,8 @@
 -----------------------------------------------------------------------------
 
 module Numeric.GPE.Potential (
-  newPotential
+  Potential(..)
+  , newPotential
   , calcNonLinearEnergy
   , assignPositionTimeEvol
   , assignMomentumTimeEvol

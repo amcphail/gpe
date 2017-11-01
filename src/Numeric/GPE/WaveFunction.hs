@@ -16,8 +16,9 @@
 -----------------------------------------------------------------------------
 
 module Numeric.GPE.WaveFunction (
-  WaveFunction(..)
-  , newWaveFunction
+  AccWaveFunction
+  , WaveFunction(..)
+  , newWaveFunction, newPsi
   , createSuperPosition
   , getNorm
   , getAbs
@@ -43,6 +44,8 @@ import Numeric.GPE.SimulationData
 radius = 5
 
 -----------------------------------------------------------------------------
+
+type AccWaveFunction = Acc (Array DIM3 ComplexVoxel)
 
 data WaveFunction = WaveFunction {
   _psi         :: Acc (Array DIM3 ComplexVoxel)
