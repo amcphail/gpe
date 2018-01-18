@@ -33,6 +33,7 @@ load_bin = False
 main :: IO ()
 main = do
      sd <- newSimulationData 128 1024 128
+--     sd <- newSimulationData 16 16 16
      let pot = newPotential sd
      let wf = newWaveFunction sd $ newPsi sd
      let wf' = getAbs wf
