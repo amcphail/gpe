@@ -50,8 +50,11 @@ length_z = 30
 
 dt_factor = 0.001
 
-num_I_steps = 100000
-num_R_steps = 100000
+--num_I_steps = 100000
+--num_R_steps = 100000
+
+num_I_steps = 1000
+num_R_steps = 1000
 
 sigma_x = 1
 sigma_y = 1

@@ -30,7 +30,8 @@ import qualified Data.ByteString.Builder as BSB
 import qualified Data.ByteString.Conversion.From as BSF
 
 import Data.Array.Accelerate
-import Data.Array.Accelerate.IO
+import Data.Array.Accelerate.IO.Data.ByteString
+import Data.Array.Accelerate.IO.Foreign.ForeignPtr
 --import Data.Array.Accelerate.LLVM.Interpreter
 import Data.Array.Accelerate.LLVM.PTX
 import Data.Array.Accelerate.Data.Complex
